@@ -1,0 +1,64 @@
+﻿@model VirusAppFinal.Variant
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Variant</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VariantName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VariantName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VariantOrigin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VariantOrigin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Countries)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Countries)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VariantDateDiscovered)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VariantDateDiscovered)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Virus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Virus.Id)
+        </dd>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Countries)
+        </dt>
+        @foreach(var c in Model.Countries)
+        {
+            <dd class = "col-sm-10">
+            @Html.DisplayFor(model => c.CountryName)</dd>
+        }
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Symptoms)
+        </dt>
+        @foreach(var s in Model.Symptoms)
+        {
+            <dd class = "col-sm-10">
+            @Html.DisplayFor(model => s.SymptomName)</dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

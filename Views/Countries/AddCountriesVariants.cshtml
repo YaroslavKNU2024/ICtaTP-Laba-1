@@ -1,0 +1,36 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model VirusAppFinal.CountriesVariant
+
+@{
+    ViewData["Title"] = "Додавання пісні";
+}
+
+<h1>Додати пісню до плейлісту @ViewBag.PlaylistName</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCountriesVariants">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="VariantId" type="hidden" value="@ViewBag.VariantId" class="form-control" />
+                <span asp-validation-for="VariantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="CountryId" multiple="multiple" class="form-group search-select" asp-items="ViewBag.countries"></select>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create a table" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*@Html.ActionLink("Повернутися до плейлісту", "PlaylistDetails", "Songs", new {id = ViewBag.PlaylistId})*@
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

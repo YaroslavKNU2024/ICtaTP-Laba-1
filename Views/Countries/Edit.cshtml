@@ -1,0 +1,50 @@
+﻿@model CountriesEdit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Country</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CountryName" class="control-label"></label>
+                <input asp-for="CountryName" class="form-control" />
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">  
+            @*@Html.LabelFor(model => model.VariantsIds, new { @class = "col-sm-2 col-form-label" })  
+            <div class="col-sm-6">  
+                @Html.ListBoxFor(model => model.VariantsIds,new MultiSelectList(ViewBag.Variants, "Value", "Text"), new { @class = "form-control", multiple = "multiple", id = "Subjects_dropdown" })  
+            </div>  
+        </div>  *@
+            <div class="form-group">
+                <br/>
+                <label class="control-label">Variants</label>
+                    <select asp-for="VariantsIds" multiple="multiple" class="form-group search-select" asp-items="ViewBag.Variants"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#Subjects_dropdown').multiselect();
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
